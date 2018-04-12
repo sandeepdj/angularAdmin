@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.10/css/perfect-scrollbar.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,300" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="public/fonts/css/ionicons.min.css">
+
+
+    <link rel="stylesheet" href="public/css/main.min.css">
+
+</head>
+
+<body ng-app="myApp" id="app" class="app off-canvas {{themeActive}}" ng-class="{'nav-expand': navFull, 'body-full': bodyFull}" ng-controller="AppCtrl">
+
+
+    <header class="site-head" ng-controller="HeadCtrl" id="site-head" ng-class="{'fixedHeader': fixedHeader}" ng-include=" 'app/views/header.html' ">
+        <!-- linked header (static) view -->
+    </header>
+
+
+    <!-- main-container -->
+    <div class="main-container clearfix" ng-class="{'nav-expand': navFull, 'nav-horizontal': navHorizontal}">
+        <aside class="nav-wrap" ng-class="{'nav-expand': navFull, 'nav-offcanvas': navOffCanvas}" id="site-nav" custom-scrollbar ng-include=" 'app/views/nav.html' ">
+
+        </aside>
+
+        <!-- content-here -->
+        <div ng-class="{'nav-expand': navFull, 'fixedHeader': fixedHeader}" class="content-container" id="content" ui-view>
+
+        </div>
+
+    </div>
+
+    <!-- #end main-container -->
+
+    <div class="site-settings clearfix hidden-xs" ng-class="{'open': isSettingsOpen}">
+        <div class="settings clearfix">
+            <div class="trigger ion ion-settings left" ng-click="toggleSettingsBox()"></div>
+            <div class="wrapper left">
+                <ul class="list-unstyled other-settings">
+                    <li class="clearfix mb10">
+                        <div class="left small">Nav Horizontal</div>
+                        <md-switch class="right" ng-model="navHorizontal" style="margin: 0" ng-change="onNavHorizontal()">
+                        </md-switch>
+                    </li>
+                    <li class="clearfix mb10">
+                        <div class="left small">Fixed Header</div>
+                        <md-switch class="right" ng-model="fixedHeader" style="margin: 0" ng-change="onFixedHeader()">
+                        </md-switch>
+                    </li>
+                    <li class="clearfix mb10">
+                        <div class="left small">Nav Full</div>
+                        <md-switch class="right" ng-model="navFull" style="margin: 0" ng-change="onNavFull()">
+                        </md-switch>
+                    </li>
+                </ul>
+                <hr/>
+                <ul class="themes list-unstyled">
+                    <li ng-class="{active: theme-zero}" ng-model="themeModel" btn-radio="'theme-zero'" ng-change="onThemeChange(themeModel)"></li>
+                    <li ng-class="{active: theme-one}" ng-model="themeModel" btn-radio="'theme-one'" ng-change="onThemeChange(themeModel)"></li>
+                    <li ng-class="{active: theme-two}" ng-model="themeModel" btn-radio="'theme-two'" ng-change="onThemeChange(themeModel)"></li>
+                    <li ng-class="{active: theme-three}" ng-model="themeModel" btn-radio="'theme-three'" ng-change="onThemeChange(themeModel)"></li>
+                    <li ng-class="{active: theme-four}" ng-model="themeModel" btn-radio="'theme-four'" ng-change="onThemeChange(themeModel)"></li>
+                    <li ng-class="{active: theme-five}" ng-model="themeModel" btn-radio="'theme-five'" ng-change="onThemeChange(themeModel)"></li>
+                    <li ng-class="{active: theme-six}" ng-model="themeModel" btn-radio="'theme-six'" ng-change="onThemeChange(themeModel)"></li>
+                    <li ng-class="{active: theme-seven}" ng-model="themeModel" btn-radio="'theme-seven'" ng-change="onThemeChange(themeModel)"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+
+<script src="public/js/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="public/js/angular-fullscreen.js"></script>
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+<script src="public/js/vendors.js"></script>
+
+<!-- <script src="public/js/perfext.js"></script> -->
+<script src="app/app.js"></script>
+
+</html>
