@@ -20,6 +20,24 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 templateUrl: 'app/views/home.html',
                 controller: 'headerController'
             })
+            .state('Buttons', {
+                url: '/Buttons',
+                templateUrl: 'app/views/buttons.html',
+                controller: 'headerController'
+            })
+            .state('Panels', {
+                url: '/Panels',
+                templateUrl: 'app/views/panels.html',
+                controller: 'headerController'
+            })
+            .state('Notifications', {
+                url: '/Notifications',
+                templateUrl: 'app/views/notification.html',
+                controller: 'headerController'
+            })
+
+
+
     }
 ]);
 
@@ -62,6 +80,48 @@ app.directive("collapseNavAccordion", ["$rootScope", function($rs) {
 app.controller("headerController", function($scope) {
 
 })
+
+app.controller("ToastDemoCtrl", ["$scope", "$interval", function($scope) {
+    $scope.noti = {
+        selected: "Success"
+    }, $scope.notifications = ["Warning", "Success", "Info", "Danger"], $scope.positionModel = "topRight", $scope.animModel = "scale";
+    var MSGS = ["<strong>Error:</strong> Try submitting content again.", "a toast message...", "another toast message...", "<strong>Title:</strong> Toast message with <a href='#na' class='alert-link'>link</a>", "Hye, angry wars happening inside red doors."],
+        cntr = 0;
+    $scope.toasts = [], $scope.closeAlert = function(index) {
+        $scope.toasts.splice(index, 1)
+    }, $scope.createToast = function() {
+        $scope.toasts.push({
+            anim: $scope.animModel,
+            type: angular.lowercase($scope.noti.selected),
+            msg: MSGS[cntr]
+        }), cntr++, cntr > 4 && (cntr = 0)
+    }
+}]);
+
+app.controller("AlertDemoCtrl", ["$scope", function($scope) {
+    $scope.alerts = [{
+        type: "warning",
+        msg: "<strong>Warning:</strong> Backup all your drive."
+    }, {
+        type: "danger",
+        msg: "Oh snap! Change a few things up and try submitting again."
+    }, {
+        type: "success",
+        msg: "Well done! You successfully read this important alert message."
+    }, {
+        type: "info",
+        msg: "<strong>Info:</strong> You have got mail."
+    }], $scope.addAlert = function() {
+        var randAlertMsg = Math.floor(4 * Math.random()),
+            randAlertType = Math.floor(4 * Math.random());
+        $scope.alerts.push({
+            type: $scope.alerts[randAlertType].type,
+            msg: $scope.alerts[randAlertMsg].msg
+        })
+    }, $scope.closeAlert = function(index) {
+        $scope.alerts.splice(index, 1)
+    }
+}]);
 app.directive("sparkline", [function() {
     return {
         restrict: "EA",
@@ -149,8 +209,9 @@ app.controller("AppCtrl", ["$rootScope", "$scope", "$timeout", function($rs, $sc
     }, $scope.onThemeActive = function() {
         sQuery.themeActive = $scope.themeActive, statesQuery.put(sQuery)
     }, $scope.onThemeChange = function(theme) {
-        console.log("theme")
-        $scope.themeActive = theme, $scope.onThemeActive()
+        console.log(theme)
+        $scope.themeActive = theme, $scope.onThemeActive();
+        console.log($scope.themeActive)
     }
 }])
 
@@ -161,7 +222,30 @@ app.controller("HeadCtrl", ["$scope", "Fullscreen", function($scope, Fullscreen)
         Fullscreen.isEnabled() ? Fullscreen.cancel() : Fullscreen.all()
     }
 }]);
-
+app.directive("customPage", ["$location", function($location) {
+    return {
+        restrict: "A",
+        link: function(scope) {
+            var path = function() {
+                    return $location.path()
+                },
+                addBg = function(path) {
+                    switch (scope.bodyFull = !1, path) {
+                        case "/404":
+                        case "/pages/404":
+                        case "/pages/signin":
+                        case "/pages/signup":
+                        case "/pages/forget-pass":
+                        case "/pages/lock-screen":
+                            scope.bodyFull = !0
+                    }
+                };
+            addBg(path()), scope.$watch(path, function(newVal, oldVal) {
+                angular.equals(newVal, oldVal) || addBg(path())
+            })
+        }
+    }
+}]);
 
 app.directive("highlightActive", ["$location", function($location) {
     return {

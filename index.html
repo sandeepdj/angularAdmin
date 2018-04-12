@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="public/fonts/css/ionicons.min.css">
     <link rel="stylesheet" href="public/css/c3.css">
-
+    <link rel="stylesheet" href="public/js/select/select.css">
     <link rel="stylesheet" href="public/css/main.min.css">
 
 </head>
 
-<body ng-app="myApp" id="app" class="app off-canvas {{themeActive}}" ng-class="{'nav-expand': navFull, 'body-full': bodyFull}" ng-controller="AppCtrl">
+<body ng-app="myApp" id="app" custom-page class="app off-canvas {{themeActive}}" ng-class="{'nav-expand': navFull, 'body-full': bodyFull}" ng-controller="AppCtrl">
 
 
     <header class="site-head" ng-controller="HeadCtrl" id="site-head" ng-class="{'fixedHeader': fixedHeader}" ng-include=" 'app/views/header.html' ">
@@ -36,9 +36,7 @@
         </div>
 
     </div>
-
     <!-- #end main-container -->
-
     <div class="site-settings clearfix hidden-xs" ng-class="{'open': isSettingsOpen}">
         <div class="settings clearfix">
             <div class="trigger ion ion-settings left" ng-click="toggleSettingsBox()"></div>
@@ -79,18 +77,20 @@
 </body>
 
 <script src="public/js/vendors.js"></script>
+<script src="public/js/select/select.min.js"></script>
+<script src="public/js/plugins.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-animate.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-aria.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular-messages.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
-<script src="public/js/ui-bootstrap-tpls-2.5.0.min.js"></script>
 <script src="public/js/angular-fullscreen.js"></script>
 <script src="public/js/chart/c3.min.js"></script>
 <script src="public/js/chart/d3.min.js"></script>
 <script src="public/js/chart/angular.easypiechart.min.js"></script>
 <script src="public/js/chart/jquery.sparkline.min.js"></script>
-<script src="public/js/perfext.js"></script>
+
 <script src="app/app.js"></script>
 
 </html>
