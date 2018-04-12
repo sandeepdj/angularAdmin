@@ -1,0 +1,128 @@
+<div class="wrap">
+    <div class="login-wrap">
+        <div class="login">
+            <div class="login-header">
+                <p><img ng-src="./public/images/logo.png"> </p>
+                <hr class="hrlg">
+                <h5 class="sncolor">Authenticate</h5>
+            </div>
+            <div class="login-body">
+                <div class="form-group pull-left">
+                    <input type="text" class="form-control lwidth" placeholder="School Code" aria-describedby="basic-addon1" autofocus>
+                    <select class="form-control lwidth lleft2p">
+                        <option>2018-2019</option>
+                        <option>2019-2020</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">
+                            <i class="ion-person"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="form-group btm18">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">
+                            <i class="ion-locked"></i>
+                        </span>
+                        <input type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="form-group btm18 lw100">
+                    <div class="ui-checkbox ui-checkbox-primary pull-left">
+                        <label>
+                            <input type="checkbox" checked="">
+                            <span class="lgcol">Remember me</span>
+                        </label>
+                    </div>
+                    <span class="pull-right lgcol">Forgot Your Password?</span>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary btn-block" md-ink-ripple="" ng-click="doLogin()">Sign In</button>
+                </div>
+            </div>
+            <div class="login-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .wrap {
+        height: 100%;
+        width: 100%;
+        background-image: url('./public/images/bg-1.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+
+    .login-wrap {
+        position: absolute;
+        color: #c3c3c3;
+        top: 50%;
+        left: 50%;
+        padding: 15px;
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        background: #fff;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    .login-header {
+        text-align: center;
+    }
+
+    .login {
+
+        width: 350px;
+        min-height: 400px;
+        background-color: #fff;
+    }
+
+    .login-body {
+        padding: 20px;
+    }
+
+    .lwidth {
+        width: 49%;
+        float: left;
+    }
+
+    .lleft2p {
+        margin-left: 2%;
+    }
+
+    .pull-left {
+        float: left;
+    }
+
+    .lgcol {
+        color: #34495e;
+    }
+
+    .hrlg {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, .1);
+    }
+
+    .login-body .form-group{
+        margin-bottom: 18px;
+    }
+    .btm18{
+        margin-bottom: 22px !important;
+    }
+    .lw100{
+        float: left;
+        width: 100%;
+    }
+    .sncolor{
+        color: #666;
+    }
+</style>

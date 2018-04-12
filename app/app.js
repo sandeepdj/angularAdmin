@@ -3,34 +3,39 @@ var app = angular.module('myApp', ['ui.router', 'ngMaterial', 'ngMessages', 'ui.
 
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider) {
-        $urlRouterProvider.otherwise("/Home");
+        $urlRouterProvider.otherwise("/Login");
         $stateProvider
             .state('/', {
                 url: '/',
-                templateUrl: 'app/views/home.html',
+                templateUrl: 'app/views/layout.html',
                 controller: 'headerController'
             })
-            .state('app', {
-                url: '/app',
-                templateUrl: 'app/views/header.html',
+            .state('Login', {
+                url: '/Login',
+                templateUrl: 'app/views/login/login.html',
                 controller: 'headerController'
             })
-            .state('Home', {
+            .state('App', {
+                url: '/App',
+                templateUrl: 'app/views/layout.html',
+                controller: 'headerController'
+            })
+            .state('App.Home', {
                 url: '/Home',
                 templateUrl: 'app/views/home.html',
                 controller: 'headerController'
             })
-            .state('Buttons', {
+            .state('App.Buttons', {
                 url: '/Buttons',
                 templateUrl: 'app/views/buttons.html',
                 controller: 'headerController'
             })
-            .state('Panels', {
+            .state('App.Panels', {
                 url: '/Panels',
                 templateUrl: 'app/views/panels.html',
                 controller: 'headerController'
             })
-            .state('Notifications', {
+            .state('App.Notifications', {
                 url: '/Notifications',
                 templateUrl: 'app/views/notification.html',
                 controller: 'headerController'
@@ -77,8 +82,11 @@ app.directive("collapseNavAccordion", ["$rootScope", function($rs) {
     }
 }]);
 
-app.controller("headerController", function($scope) {
+app.controller("headerController", function($scope,$state) {
 
+    $scope.doLogin=function(){
+        $state.go('App.Home');
+    }
 })
 
 app.controller("ToastDemoCtrl", ["$scope", "$interval", function($scope) {
