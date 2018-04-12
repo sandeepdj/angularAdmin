@@ -23,14 +23,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     }
 ]);
 
-
 app.directive("collapseNavAccordion", ["$rootScope", function($rs) {
     return {
         restrict: "A",
         link: function(scope, el) {
-            var lists = el.find(".navlist").parent("li"),
+            console.log(el);
+            var lists = el.find("ul").parent("li"),
                 a = lists.children("a"),
-                aul = lists.find("ul a"),
+                aul = lists.find("ul li a"),
                 listsRest = el.children("li").not(lists),
                 aRest = listsRest.children("a"),
                 stopClick = 0;
@@ -97,9 +97,6 @@ app.directive("sparkline", [function() {
                 opts.sliceColors = attrs.sliceColors.replace("[", "").replace("]", "").split(",");
 
             }
-
-
-
             if (angular.isString(model))
                 model = JSON.parse("[" + model + "]");
 
